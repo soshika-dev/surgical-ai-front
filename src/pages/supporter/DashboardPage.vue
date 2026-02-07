@@ -170,3 +170,4 @@ const severityVariant = (severity: string) => {
   return map[severity] || 'info'
 }
 </script>
+

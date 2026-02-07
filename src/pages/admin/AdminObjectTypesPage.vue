@@ -89,3 +89,4 @@ const removeType = async (id: string) => {
   await dataStore.deleteObjectTypeItem(id)
 }
 </script>
+

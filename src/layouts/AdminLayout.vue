@@ -36,3 +36,4 @@ onMounted(() => {
   uiStore.syncSidebarForViewport()
 })
 </script>
+

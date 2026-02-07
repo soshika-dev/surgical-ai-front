@@ -119,3 +119,4 @@ const typeLabel = (value: string) => {
   return map[value] || value
 }
 </script>
+

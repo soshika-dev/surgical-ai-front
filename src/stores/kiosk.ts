@@ -29,3 +29,4 @@ export const useKioskStore = defineStore('kiosk', () => {
     reset
   }
 })
+

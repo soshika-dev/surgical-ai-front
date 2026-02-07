@@ -4,7 +4,7 @@
 
 @font-face {
     font-family: "Nazanin";
-    src: url("../assets/fonts/IRNazaninBold.ttf") format("truetype");
+    src: url("../assets/fonts/NazaninBold.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -12,7 +12,7 @@
 
 @font-face {
     font-family: "Yekan";
-    src: url("../assets/fonts/IRYekan.ttf") format("truetype");
+    src: url("../assets/fonts/Yekan.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -20,7 +20,7 @@
 
 @font-face {
     font-family: "Koodak";
-    src: url("../assets/fonts/IRKoodak.ttf") format("truetype");
+    src: url("../assets/fonts/Koodak.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;

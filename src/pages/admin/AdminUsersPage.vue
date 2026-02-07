@@ -99,3 +99,4 @@ const removeUser = async (id: string) => {
   await dataStore.deleteUserItem(id)
 }
 </script>
+
