@@ -7,7 +7,6 @@
       <template #actions>
         <RouterLink to="/supporter/operations" class="btn btn-ghost btn-sm">بازگشت به عملیات</RouterLink>
         <Badge :label="statusLabel(operation.status)" :variant="statusVariant(operation.status)" />
-        <button class="btn btn-primary btn-sm" @click="createModalOpen = true">ثبت رویداد جدید</button>
       </template>
     </PageHeader>
 

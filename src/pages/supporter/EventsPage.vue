@@ -2,7 +2,6 @@
   <div class="space-y-6">
     <PageHeader title="رویدادها" subtitle="مرور کامل رویدادهای ثبت شده">
       <template #actions>
-        <RouterLink to="/kiosk" class="btn btn-primary btn-sm">ثبت رویداد جدید</RouterLink>
       </template>
     </PageHeader>
 

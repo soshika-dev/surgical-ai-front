@@ -2,7 +2,7 @@
   <div class="min-h-screen w-full app-shell">
     <div class="flex min-h-screen w-full">
       <main class="content-area order-1">
-        <AppNavbar class="shrink-0" />
+        <AppNavbar :showCreateEvent="false" class="shrink-0" />
         <section class="page-container">
           <RouterView />
         </section>

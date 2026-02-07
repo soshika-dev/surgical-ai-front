@@ -11,7 +11,7 @@ const THEME_STORAGE_KEY = 'surgical-ai-theme'
 const SIDEBAR_STORAGE_KEY = 'sidebar:collapsed'
 
 export const useUiStore = defineStore('ui', () => {
-  const theme = ref<string>(localStorage.getItem(THEME_STORAGE_KEY) || 'light')
+  const theme = ref<string>(localStorage.getItem(THEME_STORAGE_KEY) || 'pastel')
   const drawerOpen = ref(false)
   const sidebarCollapsed = ref(localStorage.getItem(SIDEBAR_STORAGE_KEY) === '1')
   const toasts = ref<ToastMessage[]>([])
@@ -23,7 +23,7 @@ export const useUiStore = defineStore('ui', () => {
   }
 
   const toggleTheme = () => {
-    setTheme(theme.value === 'light' ? 'dark' : 'light')
+    setTheme(theme.value === 'pastel' ? 'night' : 'pastel')
   }
 
   const setSidebarCollapsed = (collapsed: boolean) => {

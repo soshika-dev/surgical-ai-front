@@ -29,7 +29,7 @@ const supporterItems: SidebarItem[] = [
   { label: 'رویدادها', to: '/supporter/events', icon: '◷' },
   { label: 'تطبیق کلین‌روم', to: '/supporter/reconciliation', icon: '◎' },
   { label: 'گیت‌ها', to: '/supporter/gates', icon: '▥' },
-  { label: 'حالت کیوسک', to: '/kiosk', icon: '⌁' }
+  { label: ' کیوسک', to: '/kiosk', icon: '⌁' }
 ]
 
 onMounted(() => {

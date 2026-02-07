@@ -1,6 +1,5 @@
 <template>
   <div class="space-y-3">
-    <Breadcrumbs />
     <div class="flex flex-wrap items-center justify-between gap-4">
       <div>
         <h1 class="text-2xl font-semibold">{{ title }}</h1>
@@ -14,7 +13,6 @@
 </template>
 
 <script setup lang="ts">
-import Breadcrumbs from './Breadcrumbs.vue'
 
 defineProps<{
   title: string

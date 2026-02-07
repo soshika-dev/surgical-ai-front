@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-base-200 p-6">
     <div class="max-w-4xl mx-auto space-y-6">
       <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-semibold">حالت کیوسک گیت</h2>
+        <h2 class="text-2xl font-semibold"> ایجاد رویداد جدید</h2>
         <div class="badge badge-primary">مرحله {{ step }} از 6</div>
       </div>
 

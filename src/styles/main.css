@@ -2,8 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Nazanin";
+    src: url("../assets/fonts/IRNazaninBold.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Yekan";
+    src: url("../assets/fonts/IRYekan.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Koodak";
+    src: url("../assets/fonts/IRKoodak.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
-  font-family: 'Vazirmatn', 'IRANSans', 'Tahoma', 'Segoe UI', system-ui, sans-serif;
+    font-family:"Koodak", "Nazanin", "Yekan", "Vazirmatn", "IRANSans", "Tahoma", "Segoe UI", system-ui, sans-serif;
+}
+
+html, body {
+    font-family: inherit;
+}
+
+html {
+    font-size: 19px;
 }
 
 html,
@@ -83,3 +115,4 @@ body {
     transition: none !important;
   }
 }
+
