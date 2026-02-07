@@ -19,7 +19,7 @@ import { RouterLink, useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 
-const homePath = computed(() => (route.path.startsWith('/admin') ? '/admin/overview' : '/app/dashboard'))
+const homePath = computed(() => (route.path.startsWith('/admin') ? '/admin/overview' : '/supporter/dashboard'))
 
 const crumbs = computed(() => {
   return route.matched

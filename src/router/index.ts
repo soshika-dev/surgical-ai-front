@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { useAuthStore } from '../stores/auth'
+import { useAuthStore, resolveUserRole } from '../stores/auth'
 import LoginPage from '../pages/LoginPage.vue'
 import SupporterLayout from '../layouts/SupporterLayout.vue'
 import AdminLayout from '../layouts/AdminLayout.vue'
@@ -20,42 +20,27 @@ import AdminObjectTypesPage from '../pages/admin/AdminObjectTypesPage.vue'
 import AdminReportsPage from '../pages/admin/AdminReportsPage.vue'
 import AdminAuditPage from '../pages/admin/AdminAuditPage.vue'
 
+const roleHome = (role: 'ADMIN' | 'SUPPORTER') => role === 'ADMIN' ? '/admin/overview' : '/supporter/dashboard'
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
       path: '/login',
       component: AuthLayout,
-      children: [
-        {
-          path: '',
-          name: 'login',
-          component: LoginPage,
-          meta: { title: 'ورود' }
-        }
-      ]
+      children: [{ path: '', name: 'login', component: LoginPage, meta: { title: 'ورود', public: true } }]
     },
     {
-      path: '/app',
+      path: '/supporter',
       component: SupporterLayout,
-      meta: { title: 'پشتیبان' },
+      meta: { title: 'پشتیبان', requiresAuth: true, role: 'SUPPORTER' },
       children: [
-        { path: '', redirect: '/app/dashboard' },
+        { path: '', redirect: '/supporter/dashboard' },
         { path: 'dashboard', name: 'dashboard', component: DashboardPage, meta: { title: 'داشبورد' } },
         { path: 'operations', name: 'operations', component: OperationsPage, meta: { title: 'عملیات' } },
-        {
-          path: 'operations/:id',
-          name: 'operation-detail',
-          component: OperationDetailPage,
-          meta: { title: 'جزئیات عملیات' }
-        },
+        { path: 'operations/:id', name: 'operation-detail', component: OperationDetailPage, meta: { title: 'جزئیات عملیات' } },
         { path: 'events', name: 'events', component: EventsPage, meta: { title: 'رویدادها' } },
-        {
-          path: 'events/:id',
-          name: 'event-detail',
-          component: EventDetailPage,
-          meta: { title: 'جزئیات رویداد' }
-        },
+        { path: 'events/:id', name: 'event-detail', component: EventDetailPage, meta: { title: 'جزئیات رویداد' } },
         { path: 'reconciliation', name: 'reconciliation', component: ReconciliationPage, meta: { title: 'تطبیق کلین‌روم' } },
         { path: 'gates', name: 'gates', component: GatesPage, meta: { title: 'گیت‌ها' } }
       ]
@@ -63,18 +48,13 @@ const router = createRouter({
     {
       path: '/admin',
       component: AdminLayout,
-      meta: { title: 'مدیریت' },
+      meta: { title: 'مدیریت', requiresAuth: true, role: 'ADMIN' },
       children: [
         { path: '', redirect: '/admin/overview' },
         { path: 'overview', name: 'admin-overview', component: AdminOverviewPage, meta: { title: 'نمای کلی' } },
         { path: 'users', name: 'admin-users', component: AdminUsersPage, meta: { title: 'کاربران' } },
         { path: 'gates', name: 'admin-gates', component: AdminGatesPage, meta: { title: 'گیت‌ها' } },
-        {
-          path: 'object-types',
-          name: 'admin-object-types',
-          component: AdminObjectTypesPage,
-          meta: { title: 'انواع ابزار' }
-        },
+        { path: 'object-types', name: 'admin-object-types', component: AdminObjectTypesPage, meta: { title: 'انواع ابزار' } },
         { path: 'reports', name: 'admin-reports', component: AdminReportsPage, meta: { title: 'گزارش‌ها' } },
         { path: 'audit', name: 'admin-audit', component: AdminAuditPage, meta: { title: 'لاگ ممیزی' } }
       ]
@@ -82,6 +62,7 @@ const router = createRouter({
     {
       path: '/kiosk',
       component: KioskLayout,
+      meta: { requiresAuth: true },
       children: [{ path: '', name: 'kiosk', component: KioskPage, meta: { title: 'حالت کیوسک' } }]
     },
     { path: '/', redirect: '/login' }
@@ -93,16 +74,24 @@ router.beforeEach((to) => {
   if (!authStore.currentUser) {
     authStore.loadFromStorage()
   }
+
   const isLoggedIn = authStore.isAuthenticated
-  if (to.path !== '/login' && !isLoggedIn) {
+  const role = resolveUserRole(authStore.currentUser)
+  const requiresAuth = to.matched.some((record) => Boolean(record.meta?.requiresAuth))
+
+  if (requiresAuth && !isLoggedIn) {
     return '/login'
   }
-  if (to.path.startsWith('/admin') && authStore.currentUser?.role !== 'ADMIN') {
-    return '/app/dashboard'
-  }
+
   if (to.path === '/login' && isLoggedIn) {
-    return authStore.currentUser?.role === 'ADMIN' ? '/admin/overview' : '/app/dashboard'
+    return roleHome(role)
   }
+
+  const requiredRole = to.matched.find((record) => record.meta?.role)?.meta?.role
+  if (requiredRole && isLoggedIn && requiredRole !== role) {
+    return roleHome(role)
+  }
+
   return true
 })
 

@@ -9,14 +9,14 @@
     <DataTable :headers="['عملیات', 'ابزار', 'مانده', 'آخرین محل ثبت شده', 'اقدام']">
       <tr v-for="row in reconciliationRows" :key="row.key">
         <td>
-          <RouterLink class="link" :to="`/app/operations/${row.operationId}`">
+          <RouterLink class="link" :to="`/supporter/operations/${row.operationId}`">
             {{ row.caseNumber }}
           </RouterLink>
         </td>
         <td>{{ row.objectTypeName }}</td>
         <td class="text-error font-semibold">{{ row.remaining }}</td>
         <td>
-          <RouterLink v-if="row.lastEventId" class="link" :to="`/app/events/${row.lastEventId}`">
+          <RouterLink v-if="row.lastEventId" class="link" :to="`/supporter/events/${row.lastEventId}`">
             {{ row.lastSeen }}
           </RouterLink>
           <span v-else>{{ row.lastSeen }}</span>

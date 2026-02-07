@@ -5,7 +5,7 @@
       :subtitle="`${operation.orRoom} · ${operation.surgeon}`"
     >
       <template #actions>
-        <RouterLink to="/app/operations" class="btn btn-ghost btn-sm">بازگشت به عملیات</RouterLink>
+        <RouterLink to="/supporter/operations" class="btn btn-ghost btn-sm">بازگشت به عملیات</RouterLink>
         <Badge :label="statusLabel(operation.status)" :variant="statusVariant(operation.status)" />
         <button class="btn btn-primary btn-sm" @click="createModalOpen = true">ثبت رویداد جدید</button>
       </template>
@@ -50,7 +50,7 @@
             <td>{{ event.gateName }}</td>
             <td>{{ actionLabel(event.action) }}</td>
             <td>
-              <RouterLink class="link" :to="`/app/events/${event.id}`">مشاهده رویداد</RouterLink>
+              <RouterLink class="link" :to="`/supporter/events/${event.id}`">مشاهده رویداد</RouterLink>
             </td>
           </tr>
         </DataTable>

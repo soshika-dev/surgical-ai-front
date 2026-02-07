@@ -8,7 +8,7 @@
 
     <div class="flex items-center justify-between">
       <span class="text-sm opacity-70">{{ filteredOperations.length }} مورد</span>
-      <RouterLink to="/app/events" class="btn btn-ghost btn-sm">مشاهده رویدادها</RouterLink>
+      <RouterLink to="/supporter/events" class="btn btn-ghost btn-sm">مشاهده رویدادها</RouterLink>
     </div>
 
     <FilterBar>
@@ -31,7 +31,7 @@
           <Badge :label="statusLabel(operation.status)" :variant="statusVariant(operation.status)" />
         </td>
         <td>
-          <RouterLink class="link" :to="`/app/operations/${operation.id}`">مشاهده</RouterLink>
+          <RouterLink class="link" :to="`/supporter/operations/${operation.id}`">مشاهده</RouterLink>
         </td>
         <td>
           <RouterLink class="btn btn-xs btn-outline" to="/kiosk">ثبت رویداد</RouterLink>

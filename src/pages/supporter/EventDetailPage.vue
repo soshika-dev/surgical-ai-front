@@ -2,8 +2,8 @@
   <div class="space-y-6" v-if="event">
     <PageHeader :title="`جزئیات رویداد ${event.id}`" :subtitle="`${event.timestamp} · ${event.gateName}`">
       <template #actions>
-        <RouterLink to="/app/events" class="btn btn-ghost btn-sm">بازگشت به رویدادها</RouterLink>
-        <RouterLink :to="`/app/operations/${event.operationId}`" class="btn btn-outline btn-sm">
+        <RouterLink to="/supporter/events" class="btn btn-ghost btn-sm">بازگشت به رویدادها</RouterLink>
+        <RouterLink :to="`/supporter/operations/${event.operationId}`" class="btn btn-outline btn-sm">
           مشاهده عملیات
         </RouterLink>
         <Badge :label="verificationLabel(event.verification)" :variant="verificationVariant(event.verification)" />
@@ -41,7 +41,7 @@
         <div class="grid gap-4 md:grid-cols-2">
           <div>
             <span class="font-semibold">عملیات:</span>
-            <RouterLink class="link" :to="`/app/operations/${event.operationId}`">
+            <RouterLink class="link" :to="`/supporter/operations/${event.operationId}`">
               {{ operationLabel(event.operationId) }}
             </RouterLink>
           </div>
