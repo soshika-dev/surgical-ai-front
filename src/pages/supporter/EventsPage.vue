@@ -8,7 +8,7 @@
 
     <div class="flex items-center justify-between">
       <span class="text-sm opacity-70">{{ pagedEvents.length }} از {{ filteredEvents.length }}</span>
-      <RouterLink to="/app/operations" class="btn btn-ghost btn-sm">مشاهده عملیات</RouterLink>
+      <RouterLink to="/supporter/operations" class="btn btn-ghost btn-sm">مشاهده عملیات</RouterLink>
     </div>
 
     <FilterBar>
@@ -41,14 +41,14 @@
         <td>{{ event.timestamp }}</td>
         <td>{{ event.gateName }}</td>
         <td>
-          <RouterLink class="link" :to="`/app/operations/${event.operationId}`">
+          <RouterLink class="link" :to="`/supporter/operations/${event.operationId}`">
             {{ operationLabel(event.operationId) }}
           </RouterLink>
         </td>
         <td>{{ actionLabel(event.action) }}</td>
         <td>{{ verificationLabel(event.verification) }}</td>
         <td>
-          <RouterLink class="link" :to="`/app/events/${event.id}`">مشاهده</RouterLink>
+          <RouterLink class="link" :to="`/supporter/events/${event.id}`">مشاهده</RouterLink>
         </td>
       </tr>
     </DataTable>

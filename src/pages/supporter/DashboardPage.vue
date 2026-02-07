@@ -2,9 +2,9 @@
   <div class="space-y-6">
     <PageHeader title="داشبورد پشتیبان" subtitle="خلاصه وضعیت عملیات و رویدادها">
       <template #actions>
-        <RouterLink to="/app/operations" class="btn btn-ghost btn-sm">عملیات</RouterLink>
-        <RouterLink to="/app/events" class="btn btn-ghost btn-sm">رویدادها</RouterLink>
-        <RouterLink to="/app/reconciliation" class="btn btn-primary btn-sm">تطبیق کلین‌روم</RouterLink>
+        <RouterLink to="/supporter/operations" class="btn btn-ghost btn-sm">عملیات</RouterLink>
+        <RouterLink to="/supporter/events" class="btn btn-ghost btn-sm">رویدادها</RouterLink>
+        <RouterLink to="/supporter/reconciliation" class="btn btn-primary btn-sm">تطبیق کلین‌روم</RouterLink>
       </template>
     </PageHeader>
 
@@ -40,21 +40,21 @@
         <div class="card-body">
           <h3 class="card-title">عملیات جاری</h3>
           <p class="text-sm opacity-70">مدیریت عملیات و ثبت رویدادهای جدید.</p>
-          <RouterLink to="/app/operations" class="btn btn-primary btn-sm">مشاهده عملیات</RouterLink>
+          <RouterLink to="/supporter/operations" class="btn btn-primary btn-sm">مشاهده عملیات</RouterLink>
         </div>
       </div>
       <div class="card bg-base-200">
         <div class="card-body">
           <h3 class="card-title">رویدادها</h3>
           <p class="text-sm opacity-70">پیگیری آخرین رویدادهای ثبت‌شده.</p>
-          <RouterLink to="/app/events" class="btn btn-outline btn-sm">مشاهده رویدادها</RouterLink>
+          <RouterLink to="/supporter/events" class="btn btn-outline btn-sm">مشاهده رویدادها</RouterLink>
         </div>
       </div>
       <div class="card bg-base-200">
         <div class="card-body">
           <h3 class="card-title">تطبیق کلین‌روم</h3>
           <p class="text-sm opacity-70">بررسی اقلام باقی‌مانده و پیگیری مغایرت‌ها.</p>
-          <RouterLink to="/app/reconciliation" class="btn btn-ghost btn-sm">رفتن به تطبیق</RouterLink>
+          <RouterLink to="/supporter/reconciliation" class="btn btn-ghost btn-sm">رفتن به تطبیق</RouterLink>
         </div>
       </div>
     </div>

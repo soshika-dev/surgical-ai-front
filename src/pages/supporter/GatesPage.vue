@@ -2,7 +2,7 @@
   <div class="space-y-6">
     <PageHeader title="گیت‌های فعال" subtitle="نمایش وضعیت آخرین گیت‌های متصل">
       <template #actions>
-        <RouterLink to="/app/events" class="btn btn-ghost btn-sm">رویدادهای گیت</RouterLink>
+        <RouterLink to="/supporter/events" class="btn btn-ghost btn-sm">رویدادهای گیت</RouterLink>
       </template>
     </PageHeader>
     <DataTable :headers="['نام گیت', 'مکان', 'نوع', 'شناسه دستگاه', 'وضعیت']">

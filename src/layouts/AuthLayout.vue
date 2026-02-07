@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-base-200 p-6">
-    <div class="w-full max-w-md">
+  <div class="min-h-screen flex items-center justify-center app-shell p-6">
+    <div class="w-full max-w-md glass-surface rounded-2xl p-1">
       <RouterView />
     </div>
   </div>

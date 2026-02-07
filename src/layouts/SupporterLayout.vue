@@ -1,29 +1,38 @@
 <template>
-  <div class="drawer drawer-end lg:drawer-open min-h-screen w-full bg-base-200">
-    <input id="supporter-drawer" type="checkbox" class="drawer-toggle" v-model="uiStore.drawerOpen" />
-    <div class="drawer-content min-h-screen flex flex-col">
-      <AppNavbar class="shrink-0" drawer-id="supporter-drawer" />
-      <main class="flex-1 overflow-y-auto">
-        <div class="p-4 md:p-6">
+  <div class="min-h-screen w-full app-shell">
+    <div class="flex min-h-screen w-full">
+      <main class="content-area order-1">
+        <AppNavbar class="shrink-0" />
+        <section class="page-container">
           <RouterView />
-        </div>
+        </section>
       </main>
-    </div>
-    <div class="drawer-side">
-      <label for="supporter-drawer" class="drawer-overlay"></label>
-      <AppSidebar :role="authStore.currentUser?.role || 'SUPPORTER'" />
+      <AppSidebar class="order-2" title="پنل پشتیبان" :items="supporterItems" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import { RouterView } from 'vue-router'
 import AppNavbar from '../components/AppNavbar.vue'
 import AppSidebar from '../components/AppSidebar.vue'
-import { useAuthStore } from '../stores/auth'
 import { useUiStore } from '../stores/ui'
+import type { SidebarItem } from '../components/AppSidebar.vue'
 
-const authStore = useAuthStore()
 const uiStore = useUiStore()
 uiStore.initTheme()
+
+const supporterItems: SidebarItem[] = [
+  { label: 'داشبورد', to: '/supporter/dashboard', icon: '◻' },
+  { label: 'عملیات', to: '/supporter/operations', icon: '▦' },
+  { label: 'رویدادها', to: '/supporter/events', icon: '◷' },
+  { label: 'تطبیق کلین‌روم', to: '/supporter/reconciliation', icon: '◎' },
+  { label: 'گیت‌ها', to: '/supporter/gates', icon: '▥' },
+  { label: 'حالت کیوسک', to: '/kiosk', icon: '⌁' }
+]
+
+onMounted(() => {
+  uiStore.syncSidebarForViewport()
+})
 </script>
